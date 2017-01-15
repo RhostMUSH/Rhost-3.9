@@ -1,0 +1,12 @@
+This is ALPHA and fairly well tested now.
+
+This is now integrated into RhostMUSH itself.
+
+If you are upgrading to version 3.9.5p2 then likely
+you will have to make manual changes to make your
+RhostMUSH integrated into mysql as you want.
+
+To do this, please go into your ~/Server/readme directory
+and follow the instructions in the README.MYSQL file there.
+
+Thank you.

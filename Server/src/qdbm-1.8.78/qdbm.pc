@@ -1,0 +1,14 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+bindir=${exec_prefix}/bin
+libdir=${exec_prefix}/lib
+libexecdir=${exec_prefix}/libexec
+includedir=${prefix}/include
+datadir=${prefix}/share
+
+Name: QDBM
+Description: a high performance embedded database library
+Version: 1.8.78
+Requires:
+Libs: -L${libdir} -lqdbm -lc 
+Cflags: -I${includedir}

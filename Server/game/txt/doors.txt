@@ -1,0 +1,5 @@
+& help
+RhostMUSH		- The main RhostMUSH support site
+
+& rhostmush
+iweb.localecho.net 4201
