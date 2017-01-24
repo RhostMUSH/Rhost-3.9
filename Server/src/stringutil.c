@@ -903,7 +903,10 @@ rebuild_ansi(char *s_input, ANSISPLIT *s_split) {
       if ( (s_ptr->s_fghex[0] == '0') && (ToUpper(s_ptr->s_fghex[1]) == 'X') && 
            isxdigit(s_ptr->s_fghex[2]) && isxdigit(s_ptr->s_fghex[3]) && 
            ((i_ansi == -1) || strcmp(s_ptr->s_fghex, s_last.s_fghex)) ) {
-         i_ansi = 1;
+         if ( i_ansi < 0 )
+            i_ansi = 1;
+         else
+            i_ansi |= 1;
          safe_chr('%', s_buffer, &s_buffptr);
          safe_chr(SAFE_CHR, s_buffer, &s_buffptr);
          safe_str(s_ptr->s_fghex, s_buffer, &s_buffptr);
@@ -912,13 +915,16 @@ rebuild_ansi(char *s_input, ANSISPLIT *s_split) {
       if ( (s_ptr->s_bghex[0] == '0') && (ToUpper(s_ptr->s_bghex[1]) == 'X') && 
            isxdigit(s_ptr->s_bghex[2]) && isxdigit(s_ptr->s_bghex[3]) && 
            ((i_ansi == -1) || strcmp(s_ptr->s_bghex, s_last.s_bghex)) ) {
-         i_ansi = 1;
+         if ( i_ansi < 0 )
+            i_ansi = 2;
+         else
+            i_ansi |= 2;
          safe_chr('%', s_buffer, &s_buffptr);
          safe_chr(SAFE_CHR, s_buffer, &s_buffptr);
          safe_str(s_ptr->s_bghex, s_buffer, &s_buffptr);
          i_normalize = 1;
       }
-      if ( i_ansi != 1 ) {
+      if ( (i_ansi != 1) && (i_ansi != 3) ) {
          if ( s_ptr->c_fgansi && ((i_ansi == -1) || (s_ptr->c_fgansi != s_last.c_fgansi)) ) {
             if ( isAnsi[(int) (s_ptr->c_fgansi)] ) {
                safe_chr('%', s_buffer, &s_buffptr);
@@ -927,6 +933,8 @@ rebuild_ansi(char *s_input, ANSISPLIT *s_split) {
                i_normalize = 1;
             }
          }
+      }
+      if ( (i_ansi != 2) && (i_ansi != 3) ) {
          if ( s_ptr->c_bgansi && ((i_ansi == -1) || (s_ptr->c_bgansi != s_last.c_bgansi)) ) {
             if ( isAnsi[(int) (s_ptr->c_bgansi)] ) {
                safe_chr('%', s_buffer, &s_buffptr);
