@@ -30730,4 +30730,5 @@
   * lnum2() didn't work properly with lnum_compat enabled [ASH]
   * a one off unitialized variable for loading in command tables [ASH]
   * NOP handler fix for keepalive [ASH]
+  * rare null termination issue with the parser [ASH]
 
