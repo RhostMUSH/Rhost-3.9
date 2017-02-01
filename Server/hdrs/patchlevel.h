@@ -21,7 +21,7 @@
 #define	MUSH_RELEASE_DATE	"11/23/2016"	/* Source release date       */
 
 /* Define if an ALPHA release */
-#define ALPHA 1   		
+/* #define ALPHA 1   		 */
 
 /* Define if a BETA release   */
 /* #define BETA 1 */
