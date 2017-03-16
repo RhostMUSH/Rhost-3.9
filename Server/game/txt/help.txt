@@ -30732,3 +30732,5 @@
   * NOP handler fix for keepalive [ASH]
   * rare null termination issue with the parser [ASH]
   * mailfix (wmail/fix) issues fixed with player name out of range [ASH]
+  * trim didn't default to 'space' if third argument existed and null [ASH]
+
